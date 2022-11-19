@@ -11,5 +11,5 @@ internal interface ISortingAlgorithm
     
     public List<T> Sort<T>(List<T> list, Comparison<T> comparison);
 
-    public List<T> Sort<T>(List<T> list, IComparer<T> comparer, int startIndex, int count);
+    public List<T> Sort<T>(List<T> list, int startIndex, int count, IComparer<T> comparer);
 }

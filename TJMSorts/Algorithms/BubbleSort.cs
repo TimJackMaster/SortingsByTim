@@ -34,7 +34,7 @@ internal sealed class BubbleSort : ISortingAlgorithm
         return Sort(list, comparison, 0, list.Count);
     }
 
-    public List<T> Sort<T>(List<T> list, IComparer<T> comparer, int startIndex, int count)
+    public List<T> Sort<T>(List<T> list, int startIndex, int count, IComparer<T> comparer)
     {
         var comparison = new Comparison<T>(comparer.Compare);
         
@@ -43,10 +43,10 @@ internal sealed class BubbleSort : ISortingAlgorithm
     
     private List<T> Sort<T>(List<T> list, Comparison<T> comparison, int startIndex, int count)
     {
-        for (var i = startIndex + 1 + count; i > startIndex + 1; i--)
-            for (var j = startIndex; j < i - 1; j++)
-                if (_comparisonEncapsulation.Compare(list[j], list[j + 1],(x, y) => comparison(x, y) > 0))
-                    _swapEncapsulation.Swap(list, j, j + 1);
+        for (var n = count + startIndex; n > startIndex + 1; n--)
+            for (var i = startIndex; i < n - 1; i++)
+                if (_comparisonEncapsulation.Compare(list[i], list[i + 1],(x, y) => comparison(x, y) > 0))
+                    _swapEncapsulation.Swap(list, i, i + 1);
 
         return list;
     }
