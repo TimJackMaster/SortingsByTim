@@ -1,3 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo(nameof(TJMSortsTests))]
+[assembly: InternalsVisibleTo("TJMSortsTests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]

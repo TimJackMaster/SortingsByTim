@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TJMSorts", "TJMSorts\TJMSorts.csproj", "{1738D5A3-F1E6-4F39-935E-CE285B85249E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TJMSortsTests", "TJMSortsTests\TJMSortsTests.csproj", "{04477B62-D97A-4D59-A346-9638C1D4F18B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1738D5A3-F1E6-4F39-935E-CE285B85249E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1738D5A3-F1E6-4F39-935E-CE285B85249E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1738D5A3-F1E6-4F39-935E-CE285B85249E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04477B62-D97A-4D59-A346-9638C1D4F18B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04477B62-D97A-4D59-A346-9638C1D4F18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04477B62-D97A-4D59-A346-9638C1D4F18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04477B62-D97A-4D59-A346-9638C1D4F18B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
