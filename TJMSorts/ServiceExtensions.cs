@@ -1,13 +1,22 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TJMSorts.Algorithms;
-using TJMSorts.Algorithms.Components;
+using TJMSorts.Components;
 
 namespace TJMSorts;
 
+/// <summary>
+/// Service extension used to register dependency injection for the TJMSorts library.
+/// </summary>
 public static class ServiceExtensions
 {
     private static SortingOptions _options = new();
     
+    /// <summary>
+    /// Registers all components to use ISorter in the dependency injection container.
+    /// </summary>
+    /// <param name="services">Service Collection</param>
+    /// <param name="options">Options configuring the components.</param>
+    /// <returns></returns>
     public static IServiceCollection RegisterSorting(this IServiceCollection services, SortingOptions options)
     {
         _options = options;

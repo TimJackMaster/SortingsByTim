@@ -1,6 +1,6 @@
 using System.Collections;
 using TJMSorts.Algorithms;
-using TJMSorts.Algorithms.Components;
+using TJMSorts.Components;
 using TJMSortsTests.CustomComparison;
 
 namespace TJMSortsTests.Algorithms;
