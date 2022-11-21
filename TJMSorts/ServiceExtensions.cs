@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TJMSorts.Algorithms;
+using TJMSorts.AttributeClasses;
 using TJMSorts.Components;
 
 namespace TJMSorts;
@@ -21,7 +22,9 @@ public static class ServiceExtensions
     {
         _options = options;
 
-        services = services.RegisterComponents();
+        services = options.Observer is null
+            ? services.RegisterComponents()
+            : services.RegisterComponents(options.Observer);
         services = services.RegisterAlgorithm();
         services.AddTransient<ISorter, Sorter>();
         
@@ -32,7 +35,15 @@ public static class ServiceExtensions
     {
         services.AddTransient<IComparisonEncapsulation, ComparisonEncapsulation>();
         services.AddTransient<ISwapEncapsulation, SwapEncapsulation>();
+        return services;
+    }
 
+    private static IServiceCollection RegisterComponents(this IServiceCollection services, ISortingObserver observer)
+    {
+        services.AddTransient<IComparisonEncapsulation>(_ =>
+            new ObservableComparison(new ComparisonEncapsulation(), observer));
+        services.AddTransient<ISwapEncapsulation>(_ =>
+            new ObservableSwap(new SwapEncapsulation(), observer));
         return services;
     }
 
