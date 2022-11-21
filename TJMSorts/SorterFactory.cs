@@ -1,10 +1,10 @@
 ﻿using TJMSorts.Algorithms;
-using TJMSorts.Algorithms.Components;
+using TJMSorts.Components;
 
 namespace TJMSorts;
 
 /// <summary>
-/// Static factory creating sorters
+/// Static factory creating sorters. For use in cases without dependency injection.
 /// </summary>
 public static class SorterFactory
 {

@@ -9,6 +9,10 @@ internal sealed class Sorter : ISorter
 {
     private readonly ISortingAlgorithm _algorithm;
 
+    /// <summary>
+    /// ctor
+    /// </summary>
+    /// <param name="algorithm">Used algorithm</param>
     public Sorter(ISortingAlgorithm algorithm)
     {
         _algorithm = algorithm;

@@ -1,4 +1,5 @@
-﻿using TJMSorts.Algorithms.Components;
+﻿using TJMSorts.Components;
+using TJMSorts.EventArguments;
 
 namespace TJMSorts.Algorithms;
 
@@ -25,7 +26,6 @@ internal sealed class BubbleSort : ISortingAlgorithm
     public List<T> Sort<T>(List<T> list, IComparer<T> comparer)
     {
         var comparison = new Comparison<T>(comparer.Compare);
-        
         return Sort(list, comparison);
     }
 
@@ -37,7 +37,6 @@ internal sealed class BubbleSort : ISortingAlgorithm
     public List<T> Sort<T>(List<T> list, int startIndex, int count, IComparer<T> comparer)
     {
         var comparison = new Comparison<T>(comparer.Compare);
-        
         return Sort(list, comparison, startIndex, count);
     }
     
@@ -45,9 +44,11 @@ internal sealed class BubbleSort : ISortingAlgorithm
     {
         for (var n = count + startIndex; n > startIndex + 1; n--)
             for (var i = startIndex; i < n - 1; i++)
-                if (_comparisonEncapsulation.Compare(list[i], list[i + 1],(x, y) => comparison(x, y) > 0))
-                    _swapEncapsulation.Swap(list, i, i + 1);
-
+                if (_comparisonEncapsulation.Compare(
+                        list,
+                        (x, y) => comparison(x, y) > 0,
+                        new ComparingArgs(i, i + 1)))
+                    _swapEncapsulation.Swap(list, new SwappingArgs(i, i + 1));
         return list;
     }
 }
