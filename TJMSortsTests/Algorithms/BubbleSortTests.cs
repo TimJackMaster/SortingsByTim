@@ -70,14 +70,9 @@ internal sealed class BubbleSortTests
         var comparison = new Comparison<ComparableObject>((x, y) =>
         {
             if (x.SomeOtherValue.Length > y.SomeOtherValue.Length)
-            {
                 return 1;
-            }
             if (x.SomeOtherValue.Length == y.SomeOtherValue.Length)
-            {
                 return string.Compare(x.SomeOtherValue, y.SomeOtherValue, StringComparison.Ordinal);
-            }
-
             return -1;
         });
         var expectedResult = new List<ComparableObject>(list);
