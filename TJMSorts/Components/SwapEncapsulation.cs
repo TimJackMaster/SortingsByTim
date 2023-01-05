@@ -7,7 +7,7 @@ namespace TJMSorts.Components;
 /// </summary>
 internal sealed class SwapEncapsulation : ISwapEncapsulation
 {
-    public void Swap<T>(IList<T> list, SwappingArgs args)
+    public void Swap<T>(IList<T> list, SwappedArgs args)
     {
         (list[args.Index1], list[args.Index2]) = (list[args.Index2], list[args.Index1]);
     }

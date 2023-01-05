@@ -3,7 +3,7 @@
 /// <summary>
 /// Arguments when two elements are compared.
 /// </summary>
-public sealed class ComparingArgs : EventArgs
+public sealed class ComparedArgs : EventArgs
 {
     /// <summary>
     /// Index of the first element.
@@ -19,7 +19,7 @@ public sealed class ComparingArgs : EventArgs
     /// </summary>
     /// <param name="index1">Index of the first element</param>
     /// <param name="index2">Index of the second element</param>
-    public ComparingArgs(int index1, int index2)
+    public ComparedArgs(int index1, int index2)
     {
         Index1 = index1;
         Index2 = index2;

@@ -6,12 +6,13 @@ namespace TJMSortsTests;
 
 internal class SorterTests
 {
-    private readonly Mock<ISortingAlgorithm> _mockSortingAlgorithm = new();
-    private readonly ISorter _sorter;
+    private readonly Mock<IAlgorithmProvider> _mockAlgorithmProvider = new();
+    private readonly ISorter<int> _sorter;
     
     public SorterTests()
     {
-        _sorter = new Sorter(_mockSortingAlgorithm.Object);
+        var options = SortingOptions<int>.Default;
+        _sorter = new Sorter<int>(options, _mockAlgorithmProvider.Object);
     }
     
     [Test]
@@ -23,7 +24,7 @@ internal class SorterTests
         var list = TestCaseProvider.GetIntegerList(10);
         
         Assert.Throws<ArgumentOutOfRangeException>(() =>
-            _sorter.Sort(list, startIndex, count, Comparer<int>.Default));
+            _sorter.Sort(list, Comparer<int>.Default.Compare,  startIndex, count));
     }
     
     [Test]
@@ -32,6 +33,6 @@ internal class SorterTests
         var list = TestCaseProvider.GetIntegerList(10);
         
         Assert.Throws<ArgumentException>(() =>
-            _sorter.Sort(list, 5, 6, Comparer<int>.Default));
+            _sorter.Sort(list, Comparer<int>.Default.Compare, 5, 6));
     }
 }
