@@ -22,5 +22,5 @@ public interface ISortingObserver<T>
     /// </summary>
     /// <param name="args"></param>
     /// <typeparam name="T"></typeparam>
-    public void OnEntireListUpdated(UpdatingListArgs<T> args);
+    public void OnEntireListUpdated(UpdatedListArgs<T> args);
 }
