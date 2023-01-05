@@ -4,7 +4,7 @@
 /// Arguments when more than two elements changed position.
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public sealed class UpdatingListArgs<T> : EventArgs
+public sealed class UpdatedListArgs<T> : EventArgs
 {
     /// <summary>
     /// Copy of the list after the change.
@@ -15,7 +15,7 @@ public sealed class UpdatingListArgs<T> : EventArgs
     /// ctor
     /// </summary>
     /// <param name="list">List after the change.</param>
-    public UpdatingListArgs(List<T> list)
+    public UpdatedListArgs(List<T> list)
     {
         NewList = new List<T>(list);
     }
