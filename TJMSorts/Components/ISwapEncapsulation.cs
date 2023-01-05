@@ -7,5 +7,5 @@ namespace TJMSorts.Components;
 /// </summary>
 internal interface ISwapEncapsulation
 {
-    public void Swap<T>(IList<T> list, SwappingArgs args);
+    public void Swap<T>(IList<T> list, SwappedArgs args);
 }

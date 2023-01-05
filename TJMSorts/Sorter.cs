@@ -5,35 +5,23 @@ namespace TJMSorts;
 /// <summary>
 /// <inheritdoc cref="ISorter"/>
 /// </summary>
-internal sealed class Sorter : ISorter
+internal sealed class Sorter<T> : ISorter<T>
 {
-    private readonly ISortingAlgorithm _algorithm;
+    private readonly SortingOptions<T> _options;
+    private readonly IAlgorithmProvider _algorithmProvider;
 
     /// <summary>
     /// ctor
     /// </summary>
-    /// <param name="algorithm">Used algorithm</param>
-    public Sorter(ISortingAlgorithm algorithm)
+    /// <param name="options">Sorting Options used.</param>
+    /// <param name="algorithmProvider">Provides the Algorithm.</param>
+    public Sorter(SortingOptions<T> options, IAlgorithmProvider algorithmProvider)
     {
-        _algorithm = algorithm;
+        _options = options;
+        _algorithmProvider = algorithmProvider;
     }
-
-    public List<T> Sort<T>(List<T> list) where T : IComparable<T>
-    {
-        return _algorithm.Sort(new List<T>(list));
-    }
-
-    public List<T> Sort<T>(List<T> list, IComparer<T> comparer)
-    {
-        return _algorithm.Sort(new List<T>(list), comparer);
-    }
-
-    public List<T> Sort<T>(List<T> list, Comparison<T> comparison)
-    {
-        return _algorithm.Sort(new List<T>(list), comparison);
-    }
-
-    public List<T> Sort<T>(List<T> list, int startIndex, int count, IComparer<T> comparer)
+    
+    public List<T> Sort(List<T> list, Comparison<T> comparison, int startIndex, int count)
     {
         if (startIndex < 0)
             throw new ArgumentOutOfRangeException(nameof(startIndex), "startIndex must be greater than or equal to zero.");
@@ -44,6 +32,7 @@ internal sealed class Sorter : ISorter
         if (startIndex + count > list.Count)
             throw new ArgumentException("startIndex + count must be less than or equal to the length of the list.");
 
-        return _algorithm.Sort(new List<T>(list), startIndex, count, comparer);
+        var algorithm = _algorithmProvider.CreateAlgorithm(0, _options);
+        return algorithm.Sort(new List<T>(list), comparison, startIndex, count);
     }
 }

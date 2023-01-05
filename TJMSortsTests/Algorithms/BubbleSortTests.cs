@@ -21,7 +21,7 @@ internal sealed class BubbleSortTests
         var expectedResult = new List<T>(list);
         expectedResult.Sort();
         
-        var actual = _bubbleSort.Sort(list);
+        var actual = _bubbleSort.Sort(list, Comparer<T>.Default.Compare, 0, list.Count);
         
         CollectionAssert.AreEqual(expectedResult, actual);
     }
@@ -34,7 +34,7 @@ internal sealed class BubbleSortTests
         var expectedResult = new List<ComparableObject>(list);
         expectedResult.Sort(comparer);
         
-        var actual = _bubbleSort.Sort(list, comparer);
+        var actual = _bubbleSort.Sort(list, comparer.Compare, 0, list.Count);
         
         CollectionAssert.AreEqual(expectedResult, actual);
     }
@@ -45,7 +45,7 @@ internal sealed class BubbleSortTests
         var expectedResult = new List<T>(list);
         expectedResult.Sort();
         
-        var actual = _bubbleSort.Sort(list, 1, 3, Comparer<T>.Default);
+        var actual = _bubbleSort.Sort(list, Comparer<T>.Default.Compare, 1, 3);
         
         CollectionAssert.AreEqual(expectedResult, actual);
     }
@@ -58,7 +58,7 @@ internal sealed class BubbleSortTests
         var expectedResult = new List<ComparableObject>(list);
         expectedResult.Sort(1, 3, comparer);
         
-        var actual = _bubbleSort.Sort(list, 1, 3, comparer);
+        var actual = _bubbleSort.Sort(list, comparer.Compare, 1, 3);
         
         CollectionAssert.AreEqual(expectedResult, actual);
     }
@@ -78,7 +78,7 @@ internal sealed class BubbleSortTests
         var expectedResult = new List<ComparableObject>(list);
         expectedResult.Sort(comparison);
         
-        var actual = _bubbleSort.Sort(list, comparison);
+        var actual = _bubbleSort.Sort(list, comparison, 0, list.Count);
         
         CollectionAssert.AreEqual(expectedResult, actual);
     }
